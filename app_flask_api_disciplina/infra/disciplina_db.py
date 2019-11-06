@@ -6,9 +6,8 @@ table_name = "disciplinas"
 sql_create_table = f'CREATE TABLE IF NOT EXISTS {table_name} (id integer PRIMARY KEY, nome text NOT NULL, ' \
                    f'status text NOT NULL,' \
                    f'plano_ensino text NOT NULL,' \
-                   f'carga_horaria text NOT NULL);' \
-                   f'id_professor int NOT NULL'
-
+                   f'carga_horaria text NOT NULL,' \
+                   f'id_professor integer);'
 
 
 def createTable(cursor, sql):

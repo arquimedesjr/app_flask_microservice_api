@@ -8,7 +8,6 @@ from services.disciplinas_service import \
     reseta as service_reseta
 
 disciplinas_app = Blueprint('disciplinas_app', __name__, template_folder='templates')
-professores = request.get("http://localhost:5001/professores")
 
 @disciplinas_app.route("/disciplinas", methods=["GET"])
 def listar_disciplina():
@@ -19,12 +18,7 @@ def listar_disciplina():
 @disciplinas_app.route('/disciplinas', methods=['POST'])
 def cadastrar_aluno():
     nova_disciplina = request.get_json()
-    for professor in professores['id']:
-        for id_professor in nova_disciplina['id_professor']:
-            if professor == id_professor:
-                disciplina = service_criar(nova_disciplina)
-            else:
-                return jsonify({'erro': 'id_professor não existe'}), 400
+    disciplina = service_criar(nova_disciplina)
     if disciplina is None:
         return jsonify({'erro': 'Disciplina já existe'}), 400
     return jsonify(disciplina)
@@ -38,7 +32,7 @@ def alterar_disciplina(id):
     atualizado = service_atualiza(id, disciplina_data['nome'], disciplina_data['status'],
                                   disciplina_data['plano_ensino'],
                                   disciplina_data['carga_horaria'])
-    if atualizado != None:
+    if atualizado is not None:
         return jsonify(atualizado)
     return jsonify({'erro': 'disciplina nao encontrado'}), 400
 
@@ -46,7 +40,7 @@ def alterar_disciplina(id):
 @disciplinas_app.route('/disciplinas/<int:id>', methods=['GET'])
 def localizar_disciplina(id):
     disciplina = service_localiza(id)
-    if disciplina != None:
+    if disciplina is not None:
         return jsonify(disciplina)
     return jsonify({'erro': 'disciplina nao encontrado'}), 400
 

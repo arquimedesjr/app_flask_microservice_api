@@ -4,8 +4,6 @@ import requests as Req
 import infra.disciplina_db as disciplinas_db
 
 app = Flask(__name__)
-app.register_blueprint(alunos_app)
-app.register_blueprint(professores_app)
 app.register_blueprint(disciplinas_app)
 
 @app.route('/')

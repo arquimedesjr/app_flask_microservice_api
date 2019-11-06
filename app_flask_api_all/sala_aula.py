@@ -15,8 +15,8 @@ app.register_blueprint(disciplinas_app)
 @app.route('/')
 def all():
     alunos = Req.get("http://localhost:5000/alunos").json()
-    professores = Req.get("http://localhost:5000/professores").json()
-    disciplinas = Req.get("http://localhost:5000/disciplinas").json()
+    professores = Req.get("http://localhost:5001/professores").json()
+    disciplinas = Req.get("http://localhost:5002/disciplinas").json()
     return render_template("index.html", alunos=alunos, professores=professores, disciplina=disciplinas)
 
 
@@ -25,4 +25,4 @@ professores_db.init()
 disciplinas_db.init()
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000)
+    app.run(host='localhost', port=5004)
