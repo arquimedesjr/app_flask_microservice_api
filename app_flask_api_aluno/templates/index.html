@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alunos</title>
+    </head>
+    <body>
+        <p><b>Lista de Alunos</b></p>
+        <div id="alunos">
+        {% for item in alunos %}
+        <li>ID: {{ item['id'] }}, Nome: {{ item['nome'] }}</b></li>
+        {% endfor %}
+        </div>
+        <br>
+    </body>
+</html>

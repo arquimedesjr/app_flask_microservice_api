@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Disciplinas</title>
+    </head>
+    <body>
+    <p><b>Lista de Disciplinas</b></p>
+        <div id="disciplina">
+        {% for item in disciplina %}
+        <li>ID: {{ item['id'] }}, Nome: {{ item['nome'] }}, Status: {{ item['status'] }}, Plano de Ensino: {{ item['plano_ensino'] }},
+            Carga horária: {{ item['carga_horaria'] }}</b></li>
+        {% endfor %}
+        </div>
+    </body>
+</html>
